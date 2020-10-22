@@ -4,12 +4,6 @@ git:
   depth: false
   autocrlf: input
 
-addons:
-  apt:
-    packages:
-      -
-  homebrew:
-
 os:
   - linux
   - osx
@@ -19,6 +13,7 @@ env:
   global:
     - GRAVIS_REPO="https://github.com/DanySK/Gravis-CI.git"
     - GRAVIS="$HOME/gravis"
+    - JDK="adopt@1.8.212-04"
 
 before_install:
   - travis_retry git clone --depth 1 $GRAVIS_REPO $GRAVIS
