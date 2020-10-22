@@ -2,3 +2,7 @@ language: java
 
 git:
   depth: false
+  autocrlf: input
+
+script:
+  - ./gradlew check
