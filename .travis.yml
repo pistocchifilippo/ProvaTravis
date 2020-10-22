@@ -1,16 +1,31 @@
-language: java
+language: minimal
 
 git:
   depth: false
   autocrlf: input
+
+addons:
+  apt:
+    packages:
+      -
+  homebrew:
 
 os:
   - linux
   - osx
   - windows
 
+env:
+  global:
+    - GRAVIS_REPO="https://github.com/DanySK/Gravis-CI.git"
+    - GRAVIS="$HOME/gravis"
+
+before_install:
+  - travis_retry git clone --depth 1 $GRAVIS_REPO $GRAVIS
+  - source $GRAVIS/install-jdk
+
 install:
   - true #executing anymore gradle assemble
 
 script:
-  - ./gradlew check
+  - travis_retry ./gradlew check
