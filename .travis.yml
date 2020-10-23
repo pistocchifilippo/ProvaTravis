@@ -4,6 +4,10 @@ git:
   depth: false
   autocrlf: input
 
+arch:
+  - amd64
+  - arm64
+
 os:
   - linux
   - osx
@@ -20,6 +24,14 @@ env:
     - JDK="adopt-openj9@1.11"
     - JDK="adopt-openj9@1.8"
     - JDK="adopt-openj9@1.14"
+
+job:
+  exclude:
+    - arch: arm64
+    env: JDK="adopt-openj9@1.8"
+    - arch: arm64
+    env: JDK="adopt-openj9@1.14"
+
 
 before_install:
   - travis_retry git clone --depth 1 $GRAVIS_REPO $GRAVIS
